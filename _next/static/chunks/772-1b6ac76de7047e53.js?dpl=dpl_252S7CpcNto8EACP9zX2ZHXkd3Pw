@@ -764,13 +764,13 @@
                               children: "Contact",
                             }),
                             (0, s.jsx)(x(), {
-                              href: "https://mail.google.com/mail/?view=cm&to=info@morningside.ai&su=Morningside%20AI%20Contact%20Request&body=Hi%0A%0AI%20am%20reaching%20out%20from%20the%20Morningside%20AI%20website",
+                              href: "https://mail.google.com/mail/?view=cm&to=maklad456@gmail.com&su=Varyon%20Global%20Contact%20Request&body=Dear,%0A%0AI%20am%20reaching%20out%20from%20the%20Varyon%20Global%20website",
                               target: "_blank",
                               className: "w-full cursor-pointer decoration-0",
                               children: (0, s.jsx)("p", {
                                 className:
                                   "whitespace-pre-wrap text-white cursor-pointer hover:text-white/80 my-2",
-                                children: "info@morningside.ai",
+                                children: "maklad456@gmail.com",
                               }),
                             }),
                             (0, s.jsxs)("div", {
@@ -820,7 +820,7 @@
                               className:
                                 "whitespace-pre-wrap font-medium text-[#D9D9D9] uppercase hover:opacity-70",
                               children: (0, s.jsx)(x(), {
-                                href: "/terms-and-conditions",
+                                href: "_next/static/chunks/app/terms-and-conditions/terms-and-conditions.HTML",
                                 target: "_blank",
                                 className: "w-full cursor-pointer",
                                 children: "Terms & Conditions",
@@ -830,7 +830,7 @@
                               className:
                                 "whitespace-pre-wrap font-medium text-[#D9D9D9] uppercase hover:opacity-70",
                               children: (0, s.jsx)(x(), {
-                                href: "/privacy-policy",
+                                href: "_next/static/chunks/app/privacy-policy/Privacy-policy.HTML",
                                 target: "_blank",
                                 className: "w-full cursor-pointer ",
                                 children: "Privacy Policy",
@@ -866,7 +866,29 @@
                               children: (0, s.jsx)("p", {
                                 className:
                                   "whitespace-pre-wrap font-medium text-[#D9D9D9] uppercase hover:text-white/70",
-                                children: "Youtube",
+                                children: "GitHub",
+                              }),
+                            }),
+                              (0, s.jsx)(x(), {
+                              href: "https://www.youtube.com/@LiamOttley",
+                              target: "_blank",
+                              className:
+                                "w-fit cursor-pointer hover:opacity-80",
+                              children: (0, s.jsx)("p", {
+                                className:
+                                  "whitespace-pre-wrap font-medium text-[#D9D9D9] uppercase hover:text-white/70",
+                                children: "Instagram",
+                              }),
+                            }),
+                              (0, s.jsx)(x(), {
+                              href: "https://www.youtube.com/@LiamOttley",
+                              target: "_blank",
+                              className:
+                                "w-fit cursor-pointer hover:opacity-80",
+                              children: (0, s.jsx)("p", {
+                                className:
+                                  "whitespace-pre-wrap font-medium text-[#D9D9D9] uppercase hover:text-white/70",
+                                children: "Facebook",
                               }),
                             }),
                           ],
