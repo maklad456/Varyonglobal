@@ -764,13 +764,13 @@
                               children: "Contact",
                             }),
                             (0, s.jsx)(x(), {
-                              href: "https://mail.google.com/mail/?view=cm&to=maklad456@gmail.com&su=Varyon%20Global%20Contact%20Request&body=Dear,%0A%0AI%20am%20reaching%20out%20from%20the%20Varyon%20Global%20website",
+                              href: "https://mail.google.com/mail/?view=cm&to=info@varyonglobal.com&su=Varyon%20Global%20Contact%20Request&body=Dear%20Varyon%20Global%20team,%0A%0AI%20am%20reaching%20out%20from%20the%20Varyon%20Global%20website",
                               target: "_blank",
                               className: "w-full cursor-pointer decoration-0",
                               children: (0, s.jsx)("p", {
                                 className:
                                   "whitespace-pre-wrap text-white cursor-pointer hover:text-white/80 my-2",
-                                children: "maklad456@gmail.com",
+                                children: "info@varyonglobal.com",
                               }),
                             }),
                             (0, s.jsxs)("div", {
@@ -848,7 +848,7 @@
                               children: "Follow",
                             }),
                             (0, s.jsx)(x(), {
-                              href: "https://www.linkedin.com/company/morningside-ai/posts/?feedView=all",
+                              href: "https://www.linkedin.com/in/varyon-global-999710368/",
                               target: "_blank",
                               className:
                                 "w-fit cursor-pointer hover:opacity-80",
@@ -859,7 +859,7 @@
                               }),
                             }),
                             (0, s.jsx)(x(), {
-                              href: "https://www.youtube.com/@LiamOttley",
+                              href: "https://github.com/VaryonGlobal",
                               target: "_blank",
                               className:
                                 "w-fit cursor-pointer hover:opacity-80",
@@ -870,7 +870,7 @@
                               }),
                             }),
                               (0, s.jsx)(x(), {
-                              href: "https://www.youtube.com/@LiamOttley",
+                              href: "https://www.instagram.com/varyonglobal?igsh=MTlob29uOTdnaHQ1bQ%3D%3D&utm_source=qr",
                               target: "_blank",
                               className:
                                 "w-fit cursor-pointer hover:opacity-80",
@@ -881,7 +881,7 @@
                               }),
                             }),
                               (0, s.jsx)(x(), {
-                              href: "https://www.youtube.com/@LiamOttley",
+                              href: "https://www.facebook.com/share/1BxGnXTBWi/?mibextid=wwXIfr",
                               target: "_blank",
                               className:
                                 "w-fit cursor-pointer hover:opacity-80",
