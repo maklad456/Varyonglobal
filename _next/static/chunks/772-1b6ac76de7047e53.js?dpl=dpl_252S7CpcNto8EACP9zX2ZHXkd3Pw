@@ -791,7 +791,7 @@
                                   ],
                                 }),
                                 (0, s.jsx)(x(), {
-                                  href: "https://tally.so/r/wbYr52",
+                                  href: "_next/static/chunks/app/Explore-careers/Explore-careers.HTML",
                                   target: "_blank",
                                   className: "w-full cursor-pointer",
                                   children: (0, s.jsxs)("button", {
