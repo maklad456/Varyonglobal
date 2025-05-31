@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Get In Touch</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Prevent background scroll when modal is open */
+    body.modal-open { overflow: hidden; }
+
+    /* Fade-in / fade-out for backdrop */
+    #backdrop {
+      transition: opacity 0.3s ease;
+    }
+
+    /* Slide-in / slide-out for panel */
+    #panel {
+      transition: transform 0.4s ease;
+      transform: translateX(100%);
+    }
+    body.panel-open #panel {
+      transform: translateX(0);
+    }
+  </style>
+</head>
+<body class="relative">
+
+  <!-- Backdrop -->
+  <div id="backdrop"
+       class="fixed inset-0 bg-black bg-opacity-60 opacity-0 pointer-events-none z-40"
+  ></div>
+
+  <!-- Sliding Panel -->
+  <div id="panel"
+       class="fixed right-0 top-0 h-full w-full max-w-md bg-white shadow-xl z-50 p-6 flex flex-col"
+  >
+    <button id="closeBtn" class="self-end text-gray-500 hover:text-gray-700">
+      ✕
+    </button>
+    <h2 class="text-2xl font-semibold mb-4">Send Us an Inquiry</h2>
+    <form id="inquiryForm" class="flex-1 overflow-auto space-y-4">
+      <!-- Name -->
+      <div class="flex flex-col">
+        <label class="font-medium mb-1" for="name">What is your name?</label>
+        <input id="name" name="name" type="text" placeholder="Name"
+               class="border p-2 rounded" />
+        <p class="text-red-500 text-xs mt-1 error" data-for="name"></p>
+      </div>
+      <!-- Email -->
+      <div class="flex flex-col">
+        <label class="font-medium mb-1" for="email">What is your email?</label>
+        <input id="email" name="email" type="email" placeholder="Email"
+               class="border p-2 rounded" />
+        <p class="text-red-500 text-xs mt-1 error" data-for="email"></p>
+      </div>
+      <!-- Phone -->
+      <div class="flex gap-4">
+        <div class="flex flex-col">
+          <label class="font-medium mb-1" for="dialing_code">Country Code</label>
+          <select id="dialing_code" name="dialing_code"
+                  class="border p-2 rounded w-20">
+            <option value="">—</option>
+            <option>+1</option><option>+7</option><option>+20</option>
+            <!-- …add the rest here… -->
+            <option>+218</option><option>+249</option><option>+251</option>
+          </select>
+          <p class="text-red-500 text-xs mt-1 error" data-for="dialing_code"></p>
+        </div>
+        <div class="flex-1 flex flex-col">
+          <label class="font-medium mb-1" for="phone_number">Phone Number</label>
+          <input id="phone_number" name="phone_number" type="tel"
+                 placeholder="Enter phone number" class="border p-2 rounded" />
+          <p class="text-red-500 text-xs mt-1 error" data-for="phone_number"></p>
+        </div>
+      </div>
+      <!-- Role -->
+      <div class="flex flex-col">
+        <label class="font-medium mb-1" for="role">What is your role?</label>
+        <input id="role" name="role" type="text" placeholder="Enter role"
+               class="border p-2 rounded" />
+        <p class="text-red-500 text-xs mt-1 error" data-for="role"></p>
+      </div>
+      <!-- Company Name -->
+      <div class="flex flex-col">
+        <label class="font-medium mb-1" for="company_name">Company Name</label>
+        <input id="company_name" name="company_name" type="text"
+               placeholder="Enter company name" class="border p-2 rounded" />
+        <p class="text-red-500 text-xs mt-1 error" data-for="company_name"></p>
+      </div>
+      <!-- Project Budget -->
+      <div class="flex flex-col">
+        <label class="font-medium mb-1" for="project_budget">Project budget</label>
+        <select id="project_budget" name="project_budget"
+                class="border p-2 rounded">
+          <option value="">Select budget range</option>
+          <option value="<10K">Less than $10K</option>
+          <option value="10K-50K">$10K-$50K</option>
+          <option value="51K-100K">$50K-$100K</option>
+          <option value=">100K">More than $100K</option>
+        </select>
+        <p class="text-red-500 text-xs mt-1 error" data-for="project_budget"></p>
+      </div>
+      <!-- Services -->
+      <div class="flex flex-col">
+        <label class="font-medium mb-1" for="services_needed">
+          What services are you interested in?
+        </label>
+        <select id="services_needed" name="services_needed"
+                class="border p-2 rounded">
+          <option value="">Select service</option>
+          <option>App development</option>
+          <option>Web development</option>
+          <option>Custom software solutions</option>
+        </select>
+        <p class="text-red-500 text-xs mt-1 error" data-for="services_needed"></p>
+      </div>
+      <!-- Message -->
+      <div class="flex flex-col">
+        <label class="font-medium mb-1" for="message">Message</label>
+        <textarea id="message" name="message" rows="5"
+                  placeholder="Enter message" class="border p-2 rounded resize-none">
+        </textarea>
+        <p class="text-red-500 text-xs mt-1 error" data-for="message"></p>
+      </div>
+      <!-- Submit -->
+      <button id="submitBtn" type="submit"
+              class="w-fit inline-flex items-center gap-2 py-2 px-4 border border-black rounded-full">
+        <span>Send inquiry</span>
+        <svg id="spinner" class="hidden animate-spin h-4 w-4" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
+        </svg>
+      </button>
+    </form>
+  </div>
+
+  <script>
+  (function(){
+    const openPanel = () => {
+      document.body.classList.add('modal-open','panel-open');
+      backdrop.classList.remove('pointer-events-none');
+      backdrop.classList.add('opacity-100');
+    };
+    const closePanel = () => {
+      document.body.classList.remove('modal-open','panel-open');
+      backdrop.classList.add('pointer-events-none','opacity-0');
+    };
+
+    // Expose openPanel for your footer button
+    window.openContactPanel = openPanel;
+
+    const backdrop   = document.getElementById('backdrop');
+    const closeBtn   = document.getElementById('closeBtn');
+    const form       = document.getElementById('inquiryForm');
+    const submitBtn  = document.getElementById('submitBtn');
+    const spinner    = document.getElementById('spinner');
+
+    closeBtn.onclick = closePanel;
+    backdrop.onclick = closePanel;
+
+    // simple validators
+    const rules = {
+      name: v => v.length>=2 || 'At least 2 characters',
+      email: v=> /^\S+@\S+\.\S+$/.test(v) || 'Invalid email',
+      dialing_code: v=>!!v||'Required',
+      phone_number: v=>v.length>=4||'Invalid number',
+      role: v=>v.length>=2||'At least 2 characters',
+      company_name: v=>v.length>=2||'At least 2 characters',
+      project_budget: v=>!!v||'Required',
+      services_needed: v=>!!v||'Required',
+      message: v=>v.length>=2||'At least 2 characters'
+    };
+
+    function clearErrors(){
+      form.querySelectorAll('.error').forEach(el=>el.textContent='');
+    }
+    function showErrors(errs){
+      Object.entries(errs).forEach(([k,msg])=>{
+        const el = form.querySelector(`.error[data-for="${k}"]`);
+        if(el) el.textContent = msg;
+      });
+    }
+
+    form.addEventListener('submit', async e=>{
+      e.preventDefault();
+      clearErrors();
+      // collect & validate
+      const data = Object.fromEntries(new FormData(form).entries());
+      const errors = {};
+      for(let field in rules){
+        const res = rules[field](data[field]?.trim()||'');
+        if(res!==true) errors[field]=res;
+      }
+      if(Object.keys(errors).length){
+        showErrors(errors);
+        return;
+      }
+
+      // show spinner
+      submitBtn.disabled = true;
+      spinner.classList.remove('hidden');
+
+      try {
+        let resp = await fetch('/api/sendFormData',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify(data)
+        });
+        if(!resp.ok) throw '';
+        alert('Submitted successfully!');
+        form.reset();
+        closePanel();
+      } catch {
+        alert('Error, please try again.');
+      } finally {
+        spinner.classList.add('hidden');
+        submitBtn.disabled = false;
+      }
+    });
+  })();
+  </script>
+</body>
+</html>
