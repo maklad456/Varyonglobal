@@ -2716,7 +2716,7 @@
                     }),
                     (0, s.jsx)("span", {
                       className: "white-silver-animated-text",
-                      children: "that keeps you steps ahead of the competition.",
+                      children: "that keeps you ahead of the competition.",
                     }),
                     (0, s.jsx)("span", {
                       className: "white-silver-animated-text1",
@@ -2727,9 +2727,9 @@
                 (0, s.jsx)("p", {
                   ref: l,
                   className:
-                    "text-xl lg:text-2xl w-10/12 lg:w-full text-center text-[#C0C0C0]",
+                    "text-xl lg:text-2xl w-10/12 text-center text-[#C0C0C0]",
                   children:
-                    "Our solutions deploy seamlessly across markets—no limits, no latency—with transparent pricing that maximizes ROI, minimizes waste, and powers your next breakthrough.",
+                    "Our solutions deploy seamlessly across markets—no limits, no latency-with transparent pricing that maximizes ROI, minimizes waste, and powers your next breakthrough.",
                 }),
               ],
             })
