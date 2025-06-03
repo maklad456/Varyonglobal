@@ -777,7 +777,7 @@
                               className: "flex flex-row gap-2 relative z-10",
                               children: [
                                 (0, s.jsxs)("button", {
-                                  onClick: f,
+                                  onClick: function(){ window.location.href = "/contact.html"; },
                                   className:
                                     "flex cursor-pointer items-center gap-1 px-4 py-2 border border-white rounded-full text-white bg-transparent hover:bg-[#EDECE4] hover:text-black whitespace-nowrap",
                                   children: [
@@ -1518,7 +1518,7 @@
                       className:
                         "w-full flex flex-row items-center justify-center",
                       children: (0, s.jsxs)("div", {
-                        onClick: p,
+                        onClick: function(){ window.location.href = "/contact.html"; },
                         className:
                           "flex cursor-pointer mt-3 items-center gap-1 px-5 py-2 lg:px-8 lg:py-4 border-2 border-white rounded-full text-white bg-transparent hover:bg-[#EDECE4] hover:text-black transition-all duration-300",
                         children: [
@@ -1809,7 +1809,7 @@
                     (0, s.jsx)("div", {
                       className: "flex items-center",
                       children: (0, s.jsxs)("button", {
-                        onClick: f,
+                        onClick: function(){ window.location.href = "/contact.html"; },
                         className:
                           "flex items-center cursor-pointer gap-1 px-4 py-2 border border-white rounded-full text-white bg-transparent hover:bg-[#EDECE4] hover:text-black transition-all duration-300",
                         children: [

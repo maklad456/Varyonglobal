@@ -95,7 +95,7 @@
       src="_next/static/chunks/app/page-c498b7c6be152f5a.js%3Fdpl=dpl_252S7CpcNto8EACP9zX2ZHXkd3Pw"
       async=""
     ></script>
-    <title>| AI Transfomtion</title>
+    <title>Varyon Global</title>
     <meta
       name="description"
       content="Morningside AI is fast-paced AI boutique helping companies evolve into AI-first organisations through AI opportunity mapping, team upskilling, and custom AI systems development."
@@ -3165,5 +3165,94 @@
         '16:{"metadata":[["$","title","0",{"children":"Morningside AI | AI Transformation"}],["$","meta","1",{"name":"description","content":"Morningside AI is fast-paced AI boutique helping companies evolve into AI-first organisations through AI opportunity mapping, team upskilling, and custom AI systems development."}],["$","link","2",{"rel":"manifest","href":"/site.webmanifest","crossOrigin":"$undefined"}],["$","meta","3",{"name":"keywords","content":"AI, AI consulting, AI development, AI education, AI enterprise"}],["$","link","4",{"rel":"icon","href":"/Varyon-globe","type":"image/png","sizes":"96x96"}],["$","link","5",{"rel":"icon","href":"/Varyon-globe","type":"image/svg+xml"}],["$","link","6",{"rel":"shortcut icon","href":"/favicon.ico"}],["$","link","7",{"rel":"apple-touch-icon","href":"/apple-touch-icon.png","sizes":"180x180"}]],"error":null,"digest":"$undefined"}\n10:{"metadata":"$16:metadata","error":null,"digest":"$undefined"}\n',
       ]);
     </script>
-  </body>
+  <!-- ──────────────────────────────────────────────────────────────────── -->
+  <!-- PSEUDO-POPUP OVERLAY FOR “GET IN TOUCH” & “BEGIN YOUR SUCCESS STORY” -->
+  <!-- ──────────────────────────────────────────────────────────────────── -->
+
+  <!-- (A) A hidden overlay container that will hold our contact.html content -->
+  <div
+    id="contact-overlay"
+    class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center"
+  ></div>
+
+  <!-- (B) Script to prefetch contact.html & override clicks -->
+  <script>
+    (function() {
+      let contactHtml = null;
+
+      // (B.1) PREFETCH contact.html as soon as index.html loads:
+      fetch('/contact.html')
+        .then(res => {
+          if (!res.ok) throw new Error('Could not fetch /contact.html');
+          return res.text();
+        })
+        .then(htmlStr => {
+          // Put that HTML into a temporary container and extract only #contact-modal-content
+          const tmp = document.createElement('div');
+          tmp.innerHTML = htmlStr;
+          const modalContent = tmp.querySelector('#contact-modal-content');
+          if (!modalContent) {
+            console.error('contact.html did not include an element with id="contact-modal-content".');
+            return;
+          }
+          contactHtml = modalContent.outerHTML;
+        })
+        .catch(err => {
+          console.error('Error prefetching /contact.html:', err);
+        });
+
+      // (B.2) SHOW the overlay by injecting the prefetched contactHtml
+      function showContactModal() {
+        if (!contactHtml) {
+          console.warn('contactHtml is not ready yet. Try again in a moment.');
+          return;
+        }
+        const overlay = document.getElementById('contact-overlay');
+        overlay.innerHTML = contactHtml;
+        overlay.classList.remove('hidden');
+        overlay.classList.add('flex');
+      }
+
+      // (B.3) HIDE the overlay
+      function hideContactModal() {
+        const overlay = document.getElementById('contact-overlay');
+        overlay.classList.add('hidden');
+        overlay.classList.remove('flex');
+        overlay.innerHTML = '';
+      }
+
+      // (B.4) Listen for the custom “hideContactModal” event (fired by contact.html)
+      window.addEventListener('hideContactModal', () => {
+        hideContactModal();
+      });
+
+      // (B.5) Once the DOM is ready, find and override each target clickable:
+      document.addEventListener('DOMContentLoaded', () => {
+        // Look at every <button> and <div> on the page:
+        const allBtnsAndDivs = Array.from(document.querySelectorAll('button, div'));
+
+        allBtnsAndDivs.forEach(el => {
+          // Grab trimmed textContent of this element:
+          const txt = el.textContent.trim();
+
+          // If it matches exactly "Get In Touch" OR "Begin Your Success Story"
+          if (txt === 'Get In Touch' || txt === 'Begin Your Success Story') {
+            // 1) Remove any React‐injected onclick attribute:
+            el.removeAttribute('onclick');
+            // 2) If React put a function directly on el.onclick, null it out too:
+            el.onclick = null;
+
+            // 3) Install our own click handler that shows the new modal:
+            el.addEventListener('click', function(e) {
+              e.preventDefault();
+              showContactModal();
+            });
+          }
+        });
+      });
+    })();
+  </script>
+  <!-- ──────────────────────────────────────────────────────────────────── -->
+</body>
 </html>
+
